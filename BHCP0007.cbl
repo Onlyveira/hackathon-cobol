@@ -4,7 +4,7 @@
       * ANALISTA..: JOSE HILARIO VERAS LEITE JUNIOR
       * AUTOR.....: LEANDRO DAVI OLIVEIRA DE SOUZA
       * DATA......: 27/06/2026
-      * OBJETIVO..: OBJETIVO DO EXERCICIO
+      * OBJETIVO..: EVALUATE CONTA
       * EXECUCAO..: COBOL - BATCH
       * ----------------------------------------------------------------
       * VRS DATA     RESPONSAVEL     DESCRICAO DA VERSAO
@@ -36,7 +36,7 @@
       *----------------------------------------
        WORKING-STORAGE                 SECTION.
       *----------------------------------------
-       77 GDA-CODIGO-CONTA               PIC 9(2) VALUE 2.
+       77 GDA-CD-CONTA               PIC 9(2) VALUE 2.
        77 GDA-TIPO-CONTA                 PIC X(20).
 
       *----------------------------------------
@@ -47,7 +47,7 @@
        PROCEDURE DIVISION.
       ******************************************************************
 
-           EVALUATE GDA-CODIGO-CONTA
+           EVALUATE GDA-CD-CONTA
                WHEN 1
                    MOVE "CONTA CORRENTE" TO GDA-TIPO-CONTA
 
@@ -64,7 +64,7 @@
                    MOVE "TIPO INVALIDO" TO GDA-TIPO-CONTA
            END-EVALUATE.
 
-           DISPLAY "CODIGO DO TIPO: " GDA-CODIGO-CONTA.
+           DISPLAY "CODIGO DO TIPO: " GDA-CD-CONTA.
            DISPLAY "DESCRICAO: " GDA-TIPO-CONTA.
 
            GOBACK.
