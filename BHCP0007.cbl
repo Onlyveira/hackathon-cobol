@@ -1,10 +1,14 @@
       ******************************************************************
-      * SIGLA.....: BHC – BOOTCAMP HACKATHON COBOL
+      * SIGLA.....: BHC â€“ BOOTCAMP HACKATHON COBOL
       * PROGRAMA..: BHCP0007
       * ANALISTA..: JOSE HILARIO VERAS LEITE JUNIOR
       * AUTOR.....: LEANDRO DAVI OLIVEIRA DE SOUZA
       * DATA......: 27/06/2026
+<<<<<<< HEAD
       * OBJETIVO..: EVALUATE CONTA
+=======
+      * OBJETIVO..: EVALUATE
+>>>>>>> 9c365afe87faee65e20d180a23aaf73fbe3f1e23
       * EXECUCAO..: COBOL - BATCH
       * ----------------------------------------------------------------
       * VRS DATA     RESPONSAVEL     DESCRICAO DA VERSAO
