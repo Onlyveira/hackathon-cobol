@@ -1,10 +1,10 @@
       ******************************************************************
       * SIGLA.....: BHC – BOOTCAMP HACKATHON COBOL
-      * PROGRAMA..: BHCP0006
+      * PROGRAMA..: BHCP0007
       * ANALISTA..: JOSE HILARIO VERAS LEITE JUNIOR
       * AUTOR.....: LEANDRO DAVI OLIVEIRA DE SOUZA
       * DATA......: 27/06/2026
-      * OBJETIVO..: CLASS. DE SALDO COM IF
+      * OBJETIVO..: CONTA COM EVALUATE
       * EXECUCAO..: COBOL - BATCH
       * ----------------------------------------------------------------
       * VRS DATA     RESPONSAVEL     DESCRICAO DA VERSAO
@@ -17,7 +17,7 @@
        IDENTIFICATION DIVISION.
       ******************************************************************
 
-       PROGRAM-ID. BHCP0006.
+       PROGRAM-ID. BHCP0007.
 
       ******************************************************************
        ENVIRONMENT DIVISION.
@@ -37,11 +37,8 @@
        WORKING-STORAGE                 SECTION.
       *----------------------------------------
 
-       01 GDA-CADASTRO-CLIENTE.
-           03 GDA-NOME-CLIENTE         PIC A(9) VALUE "ANA PAULA".
-           03 GDA-SALDO-CONTA          PIC 9(3) VALUE 500.
-           03 GDA-RESULTADO-FINAL      PIC X(8).
-
+       77 GDA-CODIGO-CONTA         PIC 9(1) VALUE 2.
+       77 GDA-TIPO-CONTA           PIC X(20).
       *----------------------------------------
        LOCAL-STORAGE                   SECTION.
       *----------------------------------------
@@ -50,23 +47,28 @@
        PROCEDURE DIVISION.
       ******************************************************************
 
-           IF GDA-SALDO-CONTA GREATER THAN 0
-               MOVE "POSITIVO" TO GDA-RESULTADO-FINAL
+           EVALUATE GDA-CODIGO-CONTA
+               WHEN 1
+                   MOVE "CONTA CORRENTE" TO GDA-TIPO-CONTA
 
-               ELSE
-                   IF GDA-SALDO-CONTA LESS THAN 0
-                       MOVE "NEGATIVO" TO GDA-RESULTADO-FINAL
+               WHEN 2
+                   MOVE "CONTA POUPANCA" TO GDA-TIPO-CONTA
 
-                   ELSE
-                       IF GDA-SALDO-CONTA EQUAL TO 0
-                            MOVE "ZERADO" TO GDA-RESULTADO-FINAL
-                END-IF
-                 END-IF
-                   END-IF.
+               WHEN 3
+                   MOVE "CONTA SALARIO" TO GDA-TIPO-CONTA
 
-           DISPLAY "CLIENTE: " GDA-NOME-CLIENTE.
-           DISPLAY "SALDO: " GDA-SALDO-CONTA.
-           DISPLAY "SITUACAO: " GDA-RESULTADO-FINAL.
+               WHEN 4
+                   MOVE  "CONTA EMPRESARIAL" TO GDA-TIPO-CONTA
 
-           GOBACK.
+                   WHEN OTHER
+                       MOVE "TIPO INVALIDO" TO GDA-TIPO-CONTA
+
+               END-EVALUATE.
+
+
+           DISPLAY "CODIGO DO TIPO: " GDA-CODIGO-CONTA.
+           DISPLAY "DESCRICAO: " GDA-TIPO-CONTA.
+
+
+            GOBACK.
       ******************************************************************
